@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
     int port = getAvailablePort();
     if (port <= 0) {
         port = 0;
-        cout << 0 << endl;
+        cout << 0 << endl; // flush兼ねる
         return 1;
     }
 
@@ -48,11 +48,11 @@ int main(int argc, char* argv[]) {
 
     auto ret = mg_http_listen(&mgr, url, ev_handler, NULL);  // Setup listener
     if (ret == NULL) {
-        cout << 0 << endl;
+        cout << 0 << endl; // flush兼ねる
         return 1;
     }
 
-    cout << port << endl;
+    cout << port << endl; // flush兼ねる
 
     for (;;) {          // Run an infinite event loop
         mg_mgr_poll(&mgr, 1000);
