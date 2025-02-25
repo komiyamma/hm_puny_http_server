@@ -1,5 +1,4 @@
 ﻿#include "mongoose.h"   // To build, run: cc main.c mongoose.c
-#include <string> // getopt関数を使うために必要
 #include <iostream>
 
 
@@ -37,18 +36,24 @@ int main(int argc, char* argv[]) {
     int port = getAvailablePort();
     if (port <= 0) {
         port = 0;
-        cout << port << endl;
+        cout << 0 << endl;
         return 1;
     }
 
-    char url[100];
+    char url[100] = "";
     sprintf_s(url, sizeof(url), "http://localhost:%d", port);
-    cout << port << endl;
 
     struct mg_mgr mgr;  // Declare event manager
     mg_mgr_init(&mgr);  // Initialise event manager
 
     auto ret = mg_http_listen(&mgr, url, ev_handler, NULL);  // Setup listener
+    if (ret == NULL) {
+        cout << 0 << endl;
+        return 1;
+    }
+
+    cout << port << endl;
+
     for (;;) {          // Run an infinite event loop
         mg_mgr_poll(&mgr, 1000);
     }
