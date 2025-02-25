@@ -12,17 +12,13 @@ if (server) {
 }
 
 server = createAutoHttpServer({rootFolder:"C:\\あいうえお"});
-var port = 0;
 if (server) {
-    port = server.start();
-    if (port) {
-        openBrowserPane(port);
-    }
+    server.startAsync(openBrowserPane);
 }
-console.log(port)
 
 
 function openBrowserPane(port) {
+    console.log(port)
     var url = "http://localhost:" + port + "/index.html";
 
     console.log(url);
