@@ -1,7 +1,6 @@
 /*
- * HmAutoHttpServer v 1.0.0.1
- * Copyright (C) 2025 Akitsugu Komiyama
- * under the MIT License
+ * HmAutoHttpServer.js v 1.0.0.1
+ * This codes is licensed under CC0 1.0 Universal
  */ 
 
 var createAutoHttpServer;
