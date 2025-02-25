@@ -1,6 +1,6 @@
 ﻿jsmode "JScript\\" + currentmacrofilename;
 
-execjs macrodir + @"\HmAutoHttpServer\HmAutoHttpServer.js";
+execjs macrodir + @"\HmPunyHttpServer\HmPunyHttpServer.js";
 
 js{
 
@@ -11,7 +11,7 @@ if (server) {
     server.close();
 }
 
-server = createAutoHttpServer({rootFolder:"C:\\あいうえお"});
+server = createPunyHttpServer({rootFolder:"C:\\あいうえお"});
 if (server) {
     server.startAsync(openBrowserPane);
 }

@@ -1,13 +1,13 @@
 /*
- * HmAutoHttpServer.js v 1.0.0.1
+ * HmPunyHttpServer.js v 1.0.0.1
  * This codes is licensed under CC0 1.0 Universal
  */ 
 
-var createAutoHttpServer;
+var createPunyHttpServer;
 
 (function () {
     // 定義済みなら何もしない
-    if (typeof(createAutoHttpServer) == "function") {
+    if (typeof(createPunyHttpServer) == "function") {
         return;
     }
 
@@ -25,7 +25,7 @@ var createAutoHttpServer;
 
     // クラス的なもの。コンストラクタ的なもの
     // props { rootFolder: "C:\\path\\to\\folder" }
-    createAutoHttpServer = function (props) {
+    createPunyHttpServer = function (props) {
 
         if (!props) {
             output("引数がありません");
@@ -51,7 +51,7 @@ var createAutoHttpServer;
 
             start: function () {
                 // コマンドライン構築
-                var command = currentJsDirectory + "\\HmAutoHttpServer.exe";
+                var command = currentJsDirectory + "\\HmPunyHttpServer.exe";
 
                 // 実行してみる
                 this.processInfo = hidemaru.runProcess(command, props.rootFolder, "stdio", "utf8");
@@ -71,7 +71,7 @@ var createAutoHttpServer;
 
             startAsync: function (onPort) {
                 // コマンドライン構築
-                var command = currentJsDirectory + "\\HmAutoHttpServer.exe";
+                var command = currentJsDirectory + "\\HmPunyHttpServer.exe";
 
                 var sendPort = false;
 

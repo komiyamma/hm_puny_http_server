@@ -1,10 +1,10 @@
-- HmAutoHttpServer.js
+- HmPunyHttpServer.js
 
     This file is CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.
 
 
 
-- HmAutoHttpServer.exe
+- HmPunyHttpServer.exe
 
     This exe uses "Mongoose Library".
     Its license is the same as Mongoose.

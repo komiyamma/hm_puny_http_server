@@ -24,7 +24,7 @@
     <ProjectGuid>{ca0360f1-61c0-4ec9-ac57-fa04d3e9bedd}</ProjectGuid>
     <RootNamespace>ConsoleApplication5</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>HmAutoHttpServer</ProjectName>
+    <ProjectName>HmPunyHttpServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -143,7 +143,7 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="HmAutoHttpServer.rc" />
+    <ResourceCompile Include="HmPunyHttpServer.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

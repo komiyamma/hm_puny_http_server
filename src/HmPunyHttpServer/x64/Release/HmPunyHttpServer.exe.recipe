@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>G:\repogitory\hm_auto_http_server\src\x64\Debug\HmAutoHttpServer.exe</FullPath>
+      <FullPath>G:\repogitory\hm_auto_http_server\src\x64\Release\HmPunyHttpServer.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
