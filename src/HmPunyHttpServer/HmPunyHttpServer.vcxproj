@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="getport.cpp" />
+    <ClCompile Include="hidemaru_wnd.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mongoose.c" />
   </ItemGroup>
