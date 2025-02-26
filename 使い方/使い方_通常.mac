@@ -1,0 +1,43 @@
+﻿jsmode "JScript\\" + currentmacrofilename;
+
+execjs macrodir + @"\HmPunyHttpServer\HmPunyHttpServer.js";
+
+js{
+
+debuginfo(2);
+var server; // 初期化しないこと。マクロ実行空間を超えて維持する必要があるので、varで。
+
+if (server) {
+    server.close();
+}
+
+server = createPunyHttpServer({rootFolder:"C:\\あいうえお"});
+if (server) {
+    var port = server.start();
+    if (port) {
+        openBrowserPane(port);
+    }
+}
+
+
+function openBrowserPane(port) {
+    if (!port) {
+        console.log("サーバー構築に失敗");
+        return;
+    }
+
+    var url = "http://localhost:" + port + "/index.html";
+
+    browserpanecommand(
+    {
+        target: "_each",
+        url: url,
+        show: 1,
+        size: 500,
+        initialize: "async"
+    });
+}
+
+
+} // js
+

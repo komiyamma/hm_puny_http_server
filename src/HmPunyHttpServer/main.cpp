@@ -13,20 +13,10 @@ void ev_handler(struct mg_connection* c, int ev, void* ev_data) {
     }
 }
 
-BOOL WINAPI ConsoleCtrlHandler(DWORD ctrlType) {
-    switch (ctrlType) {
-    case CTRL_LOGOFF_EVENT:
-    case CTRL_SHUTDOWN_EVENT:
-        // std::cout << "ログオフまたはシャットダウンイベントが発生しました。 プログラムを終了します。" << std::endl;
-        ExitProcess(0);  // すぐにプログラムを終了
-        return TRUE;  // イベントを処理したことをシステムに通知
-    default:
-        return FALSE; // 他のイベントは処理しない
-    }
-}
-
-extern HWND hidemaruWnd;
+extern void BindWindow(HWND hWnd);
+extern bool IsBindWindowClosed();
 extern int getAvailablePort();
+extern BOOL WINAPI ConsoleCtrlHandler(DWORD ctrlType);
 
 int main(int argc, char* argv[]) {
     using namespace std;
@@ -35,11 +25,12 @@ int main(int argc, char* argv[]) {
     SetConsoleCtrlHandler(ConsoleCtrlHandler, TRUE);
 
     if (argc >= 2) {
-        // 一番目の引数を、数値文字列は秀丸のウィンドウハンドル
-        hidemaruWnd = (HWND)(std::stoul(argv[1], nullptr));
+        // 一番目の引数があれば、そのウィンドウがなくなったら、このプロセスも終了する
+        HWND hWnd = (HWND)(std::stoul(argv[1], nullptr));
+        BindWindow(hWnd);
     }
 
-
+    // 空いているポートを探す。やや時間はかかるが確実性が段違い。
     int port = getAvailablePort();
     if (port <= 0) {
         port = 0;
@@ -47,13 +38,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    char url[100] = "";
-    sprintf_s(url, sizeof(url), "http://localhost:%d", port);
+    // URLの構築
+    string url = "http://localhost:" + to_string(port);
 
     struct mg_mgr mgr;  // Declare event manager
     mg_mgr_init(&mgr);  // Initialise event manager
 
-    auto ret = mg_http_listen(&mgr, url, ev_handler, NULL);  // Setup listener
+    // リスナー開始
+    mg_connection *ret = mg_http_listen(&mgr, url.c_str(), ev_handler, NULL);  // Setup listener
     if (ret == NULL) {
         cout << 0 << endl; // flush兼ねる
         return 1;
@@ -61,11 +53,11 @@ int main(int argc, char* argv[]) {
 
     cout << port << endl; // flush兼ねる
 
-    for (;;) {          // Run an infinite event loop
+    // イベントループ
+    while (true) {
 
-        // 有効な値を引数としてもらっているのに、そらがウィンドウでないなら終了
-        // 秀丸から起動して、該当の秀丸を閉じたか、もしくは秀丸が強制終了してしまった可能性
-		if (hidemaruWnd && !IsWindow(hidemaruWnd)) {
+		// 結びつけていたウィンドウが閉じてしまっているなら、このプロセスも終了する
+		if (IsBindWindowClosed()) {
 			break;
 		}
 

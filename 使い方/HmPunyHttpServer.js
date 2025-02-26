@@ -51,7 +51,7 @@ var createPunyHttpServer;
 
             start: function () {
                 // コマンドライン構築
-                var command = currentJsDirectory + "\\HmPunyHttpServer.exe";
+                var command = currentJsDirectory + "\\HmPunyHttpServer.exe" + " " + hidemaru.getCurrentWindowHandle();
 
                 // 実行してみる
                 this.processInfo = hidemaru.runProcess(command, props.rootFolder, "stdio", "utf8");
@@ -71,7 +71,7 @@ var createPunyHttpServer;
 
             startAsync: function (onPort) {
                 // コマンドライン構築
-                var command = currentJsDirectory + "\\HmPunyHttpServer.exe";
+                var command = currentJsDirectory + "\\HmPunyHttpServer.exe" + " " + hidemaru.getCurrentWindowHandle();
 
                 var sendPort = false;
 

@@ -2,6 +2,7 @@
 
 #pragma comment(lib, "ws2_32.lib")
 
+// ポートの取得(空いてるところを探すレベルではなく、「１回自動でウィンドウズに探索」させてみて、そこを「実際に使用して、ただちに解放して」、そのポート値を返す)
 int getAvailablePort() {
     // Winsockの初期化
     WSADATA wsaData;
