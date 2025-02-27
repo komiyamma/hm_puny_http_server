@@ -3,11 +3,10 @@
     This file is CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.
 
 
-
 - HmPunyHttpServer.exe
 
     This exe uses "Mongoose Library".
-    Its license is the same as Mongoose.
+    The license of "HmPunyHttpServer.exe" is the GNU General Public License version 2, the same as Mongoose's.
 
 
 - Mongoose
