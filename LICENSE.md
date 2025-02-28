@@ -5,8 +5,9 @@
 
 - HmPunyHttpServer.exe
 
-    This exe uses "Mongoose Library".
-    The license of "HmPunyHttpServer.exe" is the GNU General Public License version 2, the same as Mongoose's.
+    Copyright (c) 2025 Akitsugu Komiyama
+
+    under the GNU General Public License version 2, the same as Mongoose's.
 
 
 - Mongoose
