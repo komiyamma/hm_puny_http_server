@@ -13,7 +13,10 @@ if (server_1) {
 
 server_1 = createPunyHttpServer({rootFolder:"C:\\あいうえお"});
 if (server_1) {
-    server_1.startAsync(openRenderPane1);
+    var port1 = server_1.start();
+    if (port1) {
+        openRenderPane1(port1);
+    }
 }
 
 
@@ -26,7 +29,10 @@ if (server_2) {
 
 server_2 = createPunyHttpServer({rootFolder:"C:\\かきくけこ"});
 if (server_2) {
-    server_2.startAsync(openRenderPane2);
+    var port2 = server_2.start();
+    if (port2) {
+        openRenderPane2(port2);
+    }
 }
 
 
