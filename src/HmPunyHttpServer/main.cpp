@@ -1,7 +1,9 @@
 ﻿#include "mongoose.h"   // To build, run: cc main.c mongoose.c
 #include <iostream>
-
+#include <memory>
 #include <string>
+
+using namespace std;
 
 // HTTP server event handler function
 void ev_handler(struct mg_connection* c, int ev, void* ev_data) {
@@ -19,7 +21,6 @@ extern int getAvailablePort();
 extern BOOL WINAPI ConsoleCtrlHandler(DWORD ctrlType);
 
 int main(int argc, char* argv[]) {
-    using namespace std;
 
     // コンソール制御ハンドラを設定
     SetConsoleCtrlHandler(ConsoleCtrlHandler, TRUE);
@@ -41,11 +42,13 @@ int main(int argc, char* argv[]) {
     // URLの構築
     string url = "http://localhost:" + to_string(port);
 
-    struct mg_mgr mgr;  // Declare event manager
-    mg_mgr_init(&mgr);  // Initialise event manager
+    // リソースを管理するためにunique_ptrを使用
+    unique_ptr<mg_mgr, decltype(&mg_mgr_free)> mgr(new mg_mgr, mg_mgr_free);
+
+	mg_mgr_init(mgr.get());  // イベントマネージャーの初期化
 
     // リスナー開始
-    mg_connection *ret = mg_http_listen(&mgr, url.c_str(), ev_handler, NULL);  // Setup listener
+    mg_connection *ret = mg_http_listen(mgr.get(), url.c_str(), ev_handler, NULL);  // Setup listener
     if (ret == NULL) {
         cout << 0 << endl; // flush兼ねる
         return 1;
@@ -61,7 +64,10 @@ int main(int argc, char* argv[]) {
 			break;
 		}
 
-        mg_mgr_poll(&mgr, 1000);
+        mg_mgr_poll(mgr.get(), 1000);
     }
+
+    // unique_ptrがスコープを離れると、自動でmg_mgr_freeが呼ばれる
+
     return 0;
 }
