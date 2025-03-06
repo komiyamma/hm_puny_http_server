@@ -15,6 +15,10 @@ HmSemaphore::~HmSemaphore() {
 }
 
 BOOL HmSemaphore::waitForOwnership() {
+	if (hSemaphore == NULL) {
+		return FALSE;
+	}
+
     // ç≈ëÂÇ≈2ïbë“ã@
     DWORD waitResult = WaitForSingleObject(hSemaphore, 2000);
     if (waitResult == WAIT_OBJECT_0) {
