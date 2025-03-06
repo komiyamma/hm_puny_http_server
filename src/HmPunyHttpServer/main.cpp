@@ -3,6 +3,8 @@
 #include <memory>
 #include <string>
 
+#include "semaphore.h"
+
 using namespace std;
 
 // HTTP server event handler function
@@ -31,6 +33,12 @@ int main(int argc, char* argv[]) {
         BindWindow(hWnd);
     }
 
+    std::unique_ptr<HmSemaphore> semaphore = std::make_unique<HmSemaphore>();
+	if (!semaphore->waitForOwnership()) {
+		cout << 0 << endl; // flush兼ねる
+		return 1;
+	}
+
     // 空いているポートを探す。やや時間はかかるが確実性が段違い。
     int port = getAvailablePort();
     if (port <= 0) {
@@ -55,6 +63,9 @@ int main(int argc, char* argv[]) {
     }
 
     cout << port << endl; // flush兼ねる
+
+    // semaphoreオブジェのデストラクタを実行
+    semaphore.reset();
 
     // イベントループ
     while (true) {

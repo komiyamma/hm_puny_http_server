@@ -138,11 +138,13 @@
     <ClCompile Include="bindwnd.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mongoose.c" />
+    <ClCompile Include="semaphore.cpp" />
     <ClCompile Include="shutdown.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mongoose.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="semaphore.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HmPunyHttpServer.rc" />

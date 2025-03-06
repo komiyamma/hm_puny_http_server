@@ -2,4 +2,5 @@ G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\getport.cpp;G:\repogitory
 G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\bindwnd.cpp;G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\x64\Release\bindwnd.obj
 G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\main.cpp;G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\x64\Release\main.obj
 G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\mongoose.c;G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\x64\Release\mongoose.obj
+G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\semaphore.cpp;G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\x64\Release\semaphore.obj
 G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\shutdown.cpp;G:\repogitory\hm_puny_http_server\src\HmPunyHttpServer\x64\Release\shutdown.obj
