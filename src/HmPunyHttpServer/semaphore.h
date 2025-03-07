@@ -4,5 +4,5 @@ private:
 public:
 	HmSemaphore();
 	~HmSemaphore();
-	BOOL waitForOwnership();
+	BOOL isSuccessWaitForOwnership();
 };

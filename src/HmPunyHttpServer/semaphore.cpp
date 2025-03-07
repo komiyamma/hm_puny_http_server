@@ -14,7 +14,7 @@ HmSemaphore::~HmSemaphore() {
 	CloseHandle(hSemaphore);
 }
 
-BOOL HmSemaphore::waitForOwnership() {
+BOOL HmSemaphore::isSuccessWaitForOwnership() {
 	if (hSemaphore == NULL) {
 		return FALSE;
 	}

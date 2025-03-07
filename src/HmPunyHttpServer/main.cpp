@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::unique_ptr<HmSemaphore> semaphore = std::make_unique<HmSemaphore>();
-	if (!semaphore->waitForOwnership()) {
+	if (!semaphore->isSuccessWaitForOwnership()) {
 		cout << 0 << endl; // flush兼ねる
 		return 1;
 	}

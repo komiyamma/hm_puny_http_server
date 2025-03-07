@@ -1,4 +1,4 @@
-# HmTinyHttpServer
+# HmPunyHttpServer
 
 ![HmPunyHttpServer v1.1.1](https://img.shields.io/badge/HmPunyHttpServer-v1.1.1-6479ff.svg)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
